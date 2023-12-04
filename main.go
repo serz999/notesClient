@@ -1,6 +1,7 @@
 package main
 
 import (
+	"bufio"
 	"bytes"
 	"encoding/json"
 	"flag"
@@ -47,7 +48,8 @@ func Add(noteUrl string) {
     fmt.Printf("Enter the lastname: ")
     fmt.Scanf("%s", &note.AuthorLastName) 
     fmt.Printf("Your note:")
-    fmt.Scanf("%s", &note.Note)
+    r := bufio.NewReader(os.Stdin)
+    note.Note, _  = r.ReadString('\n')
     
     jsonBytes, err := json.Marshal(note)
     if err != nil {
