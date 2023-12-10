@@ -78,7 +78,7 @@ func Add(noteUrl string) {
 
     var addedNote dto.Note
     json.Unmarshal(body, &addedNote)
-    fmt.Printf("Added. Id of new note is '%v'\n", addedNote.Id)
+    fmt.Printf("Added. Id of new note is '%s'\n", addedNote.Id)
 }
 
 func Del(noteUrl string) {
@@ -165,7 +165,16 @@ func Get(noteUrl string) {
 }
 
 func NoteView(note dto.Note) {
-    fmt.Printf("%+v\n", note)
+    border := ""
+    for i := 0; i < len(note.Note); i++ {
+        border += "-" 
+    }
+
+    fmt.Println(border)
+    fmt.Printf("%s", note.Note)
+    fmt.Println(border)
+
+    fmt.Printf("Text by: %s %s\n", note.AuthorFirstName, note.AuthorLastName)
 }
 
 func Help() {
