@@ -20,6 +20,7 @@ func main() {
     notesEndpoint := "notes"
     url := fmt.Sprintf("%s://%s:%s/%s", schema, host, port, notesEndpoint)
     for true {
+        Help()
         fmt.Printf("note> ")
         var cmd string
         fmt.Scanf("%s", &cmd)
@@ -32,10 +33,6 @@ func main() {
             Get(url)
         case "exit":
             os.Exit(0)
-        case "help":
-            Help()
-        default:
-            fmt.Println("Invalid command, try 'help' prompt")
         } 
     }
 }
@@ -178,7 +175,7 @@ func NoteView(note dto.Note) {
 }
 
 func Help() {
-    fmt.Println("SCRIPTS")
+    fmt.Println("PROMPT")
     fmt.Println("   help    - print help")
     fmt.Println("   add     - add note")
     fmt.Println("   del     - del note")
